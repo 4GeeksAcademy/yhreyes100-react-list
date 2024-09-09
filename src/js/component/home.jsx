@@ -68,7 +68,7 @@ const Home = () => {
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
 																	<i id={index} onClick={handleArrayDelete} className="far fa-trash-alt"  ></i>
-																	<i id={index} onClick={handleArrayUpdate} className="far fa-edit" ></i>
+																	<i id={index} onClick={handleArrayUpdate} className="far fa-edit" hidden="true" ></i>
 															</div>
 													</li> 
 
