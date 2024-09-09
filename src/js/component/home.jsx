@@ -24,10 +24,11 @@ const Home = () => {
 			}
 		};
 		const handleArrayUpdate=(evt)=>{
-			console.log(task);
+			const index =parseInt(evt.target.id);
+			//evt.target.offsetParent.children[0].childNodes[0]="false";
+			console.log(evt.target.offsetParent.children[0].childNodes[0])
 		}
 		const handleArrayDelete=(evt)=>{
-			console.log(evt);
 			const index =parseInt(evt.target.id);
 			const newTask = [
 				...task.slice(0, parseInt(index)), // Elements before the one to delete
@@ -77,8 +78,13 @@ const Home = () => {
 									</li>
 								</ul>
 						</div>
+						{task.length>1?
+						<>
 						<div className="pag1 list-group-item-secondary"></div>
 						<div className="pag2 list-group-item-secondary"></div>
+						</>:""
+						}
+						
 			</div>
 		);
 };
