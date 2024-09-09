@@ -23,12 +23,10 @@ const Home = () => {
 				}
 			}
 		};
-		const handleArrayUpdate=(evt)=>{
-			const index =parseInt(evt.target.id);
-			//evt.target.offsetParent.children[0].childNodes[0]="false";
-			console.log(evt.target.offsetParent.children[0].childNodes[0])
-		}
+
+
 		const handleArrayDelete=(evt)=>{
+
 			const index =parseInt(evt.target.id);
 			const newTask = [
 				...task.slice(0, parseInt(index)), // Elements before the one to delete
@@ -64,11 +62,10 @@ const Home = () => {
 									
 													<li key={index} className={`list-group-item list-group-item-secondary ${index==0?"first":"flex-container"}`} >
 															<div className={index==0?"":"text"}>
-																	{index==0?t:<input type="text" value={t}  disabled />} 	
+																	{t} 	
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
 																	<i id={index} onClick={handleArrayDelete} className="far fa-trash-alt"  ></i>
-																	<i id={index} onClick={handleArrayUpdate} className="far fa-edit" hidden="true" ></i>
 															</div>
 													</li> 
 
