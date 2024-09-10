@@ -12,7 +12,7 @@ const Home = () => {
 		const [delet,setDelete]=useState(null);
 		// Event handler for updating the array
 		const handleArrayADD = (evt) => {
-			if(evt.key === 'Enter'){
+			if(evt.key==="Enter"){
 				if (inputValue.trim() !== '') {
 					// Add a new element at the end of the array
 					if(edit==null){
@@ -42,7 +42,7 @@ const Home = () => {
 		};
 		useEffect(()=>{
 				if(edit!=null){
-					setInputValue(edit);
+					setInputValue(task[edit]);
 				}
 				else if(delet!=null){
 					const index =parseInt(delet);
@@ -82,15 +82,15 @@ const Home = () => {
 								/>
 									</li>
 									{
-									task.map((task,index)=>(
+									task.map((t,index)=>(
 									
 													<li key={index} className={`list-group-item list-group-item-secondary ${index==0?"first":"flex-container"}`} >
 															<div className={index==0?"":"text"}>
-																	{task} 	
+																	{t} 	
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
 																	<i onClick={()=>setDelete(index)} className="far fa-trash-alt"  ></i>
-																	<i onClick={()=>setEdit(task)} className="far fa-edit" ></i>
+																	<i onClick={()=>setEdit(index)} className="far fa-edit" ></i>
 															</div>
 													</li> 
 
