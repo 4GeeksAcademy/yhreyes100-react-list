@@ -12,7 +12,7 @@ const Home = () => {
 		const [delet,setDelete]=useState(null);
 		// Event handler for updating the array
 		const handleArrayADD = (evt) => {
-			if(evt.keyCode===13){
+			if(evt.key === 'Enter'){
 				if (inputValue.trim() !== '') {
 					// Add a new element at the end of the array
 					if(edit==null){
