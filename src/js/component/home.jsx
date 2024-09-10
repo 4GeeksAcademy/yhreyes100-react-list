@@ -82,15 +82,15 @@ const Home = () => {
 								/>
 									</li>
 									{
-									task.map((t,index)=>(
+									task.map((task,index)=>(
 									
 													<li key={index} className={`list-group-item list-group-item-secondary ${index==0?"first":"flex-container"}`} >
 															<div className={index==0?"":"text"}>
-																	{t} 	
+																	{task} 	
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
 																	<i onClick={()=>setDelete(index)} className="far fa-trash-alt"  ></i>
-																	<i onClick={()=>setEdit(t)} className="far fa-edit" ></i>
+																	<i onClick={()=>setEdit(task)} className="far fa-edit" ></i>
 															</div>
 													</li> 
 
