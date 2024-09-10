@@ -21,11 +21,11 @@ input{
     justify-content: space-between;
   }
 .text{
-    width: 420px;
+    width: 390px;
     overflow-wrap: break-word;
  }
  .img{
-    width: 30px;
+    width: 60px;
  }
 a{
     width: 25px;

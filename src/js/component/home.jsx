@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { useState } from "react";
 //include images into your bundle
 import rigoImage from "../../img/rigo-baby.jpg";
@@ -8,23 +8,45 @@ const Home = () => {
 	    // Define the initial array state
 		const [task, setTask] = useState(["You Need To Add New Task on The Task List"]);
 		const [inputValue, setInputValue] = useState("");
+		const [edit,setEdit]=useState(null);
 		// Event handler for updating the array
 		const handleArrayADD = (evt) => {
 			if(evt.keyCode===13){
 				if (inputValue.trim() !== '') {
 					// Add a new element at the end of the array
-					const newTask = [...task, inputValue];
-		
-					// Update the array state
-					setTask(newTask);
-		
-					// Clear the input field
-					setInputValue("");
+					if(edit==null){
+						const newTask = [...task, inputValue];
+			
+						// Update the array state
+						setTask(newTask);
+			
+						// Clear the input field
+						setInputValue("");
+					}
+					else{
+						const index =  parseInt(edit);
+						const newTask = [
+							...task.slice(0, parseInt(index)), // Elements before the one to delete
+							inputValue,
+							...task.slice( parseInt(index) + 1) // Elements after the one to delete
+						  ];
+						setTask(newTask);  
+						setInputValue("");
+						setEdit(null);  
+					}
+				}
+				else{
+					setEdit(null);
 				}
 			}
+			
 		};
-
-
+		useEffect(()=>{
+				if(edit!=null){
+					setInputValue(task[edit]);
+				}
+		},[edit]
+		)
 		const handleArrayDelete=(evt)=>{
 
 			const index =parseInt(evt.target.id);
@@ -33,6 +55,8 @@ const Home = () => {
 				...task.slice( parseInt(index) + 1) // Elements after the one to delete
 			  ];
 			  setTask(newTask); // Triggers a re-render with the new array
+			  setInputValue("");
+			  setEdit(null);  
 		}
 		return (
 			
@@ -66,6 +90,7 @@ const Home = () => {
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
 																	<i id={index} onClick={handleArrayDelete} className="far fa-trash-alt"  ></i>
+																	<i id={index} onClick={()=>setEdit(index)} className="far fa-edit" ></i>
 															</div>
 													</li> 
 
