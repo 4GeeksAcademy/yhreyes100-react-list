@@ -9,6 +9,7 @@ const Home = () => {
 		const [task, setTask] = useState(["You Need To Add New Task on The Task List"]);
 		const [inputValue, setInputValue] = useState("");
 		const [edit,setEdit]=useState(null);
+		const [delet,setDelete]=useState(null);
 		// Event handler for updating the array
 		const handleArrayADD = (evt) => {
 			if(evt.keyCode===13){
@@ -16,10 +17,8 @@ const Home = () => {
 					// Add a new element at the end of the array
 					if(edit==null){
 						const newTask = [...task, inputValue];
-			
 						// Update the array state
 						setTask(newTask);
-			
 						// Clear the input field
 						setInputValue("");
 					}
@@ -27,7 +26,7 @@ const Home = () => {
 						const index =  parseInt(edit);
 						const newTask = [
 							...task.slice(0, parseInt(index)), // Elements before the one to delete
-							inputValue,
+							inputValue,							//Updated element		
 							...task.slice( parseInt(index) + 1) // Elements after the one to delete
 						  ];
 						setTask(newTask);  
@@ -45,19 +44,20 @@ const Home = () => {
 				if(edit!=null){
 					setInputValue(task[edit]);
 				}
-		},[edit]
-		)
-		const handleArrayDelete=(evt)=>{
+				else if(delet!=null){
+					const index =parseInt(delet);
+					const newTask = [
+						...task.slice(0, parseInt(index)), // Elements before the one to delete
+						...task.slice( parseInt(index) + 1) // Elements after the one to delete
+					];
+					setTask(newTask); // Triggers a re-render with the new array
+					setInputValue("");
+					setEdit(null); 
+					setDelete(null); 
+				}
+		},[edit,delet]
+		);
 
-			const index =parseInt(evt.target.id);
-			const newTask = [
-				...task.slice(0, parseInt(index)), // Elements before the one to delete
-				...task.slice( parseInt(index) + 1) // Elements after the one to delete
-			  ];
-			  setTask(newTask); // Triggers a re-render with the new array
-			  setInputValue("");
-			  setEdit(null);  
-		}
 		return (
 			
 			<div className="container d-grid justify-content-center">
@@ -89,8 +89,8 @@ const Home = () => {
 																	{t} 	
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
-																	<i id={index} onClick={handleArrayDelete} className="far fa-trash-alt"  ></i>
-																	<i id={index} onClick={()=>setEdit(index)} className="far fa-edit" ></i>
+																	<i onClick={()=>setDelete(index)} className="far fa-trash-alt"  ></i>
+																	<i onClick={()=>setEdit(index)} className="far fa-edit" ></i>
 															</div>
 													</li> 
 
