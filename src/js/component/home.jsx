@@ -42,7 +42,7 @@ const Home = () => {
 		};
 		useEffect(()=>{
 				if(edit!=null){
-					setInputValue(task[edit]);
+					setInputValue(edit);
 				}
 				else if(delet!=null){
 					const index =parseInt(delet);
@@ -90,7 +90,7 @@ const Home = () => {
 															</div>
 															<div className="img flex-container" hidden={index==0?true:false}>
 																	<i onClick={()=>setDelete(index)} className="far fa-trash-alt"  ></i>
-																	<i onClick={()=>setEdit(index)} className="far fa-edit" ></i>
+																	<i onClick={()=>setEdit(t)} className="far fa-edit" ></i>
 															</div>
 													</li> 
 
