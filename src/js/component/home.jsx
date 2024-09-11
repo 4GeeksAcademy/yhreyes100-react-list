@@ -44,7 +44,7 @@ const Home = () => {
 				if(edit!=null){
 					setInputValue(task[edit]);
 				}
-				else if(delet!=null){
+				if(delet!=null){
 					const index =parseInt(delet);
 					const newTask = [
 						...task.slice(0, parseInt(index)), // Elements before the one to delete
