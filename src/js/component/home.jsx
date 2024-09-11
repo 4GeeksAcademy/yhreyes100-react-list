@@ -25,9 +25,9 @@ const Home = () => {
 					else{
 						const index =  parseInt(edit);
 						const newTask = [
-							...task.slice(0, parseInt(index)), // Elements before the one to delete
-							inputValue,							//Updated element		
-							...task.slice( parseInt(index) + 1) // Elements after the one to delete
+							...task.slice(0, parseInt(index)),
+							inputValue,								
+							...task.slice( parseInt(index) + 1) 
 						  ];
 						setTask(newTask);  
 						setInputValue("");
@@ -47,10 +47,10 @@ const Home = () => {
 				if(delet!=null){
 					const index =parseInt(delet);
 					const newTask = [
-						...task.slice(0, parseInt(index)), // Elements before the one to delete
-						...task.slice( parseInt(index) + 1) // Elements after the one to delete
+						...task.slice(0, parseInt(index)), 
+						...task.slice( parseInt(index) + 1) 
 					];
-					setTask(newTask); // Triggers a re-render with the new array
+					setTask(newTask); 
 					setInputValue("");
 					setEdit(null); 
 					setDelete(null); 
@@ -61,14 +61,6 @@ const Home = () => {
 		return (
 			
 			<div className="container d-grid justify-content-center">
-				{/* Input field to enter new elements */}
-				
-	
-	
-				{/* Display the current array */}
-				{/*<div>Array: {JSON.stringify(array)}</div>*/}
-
-				
 						<div className="list">
 								<ul className="list-group ">
 									<li className="list-group-item list-group-item-secondary">
